@@ -1,0 +1,41 @@
+---
+- hosts: web-servers
+  tasks:
+
+#      - name: Create file
+#        file:
+#            path: /root/input.txt
+#            state: touchi
+#
+#       - name: Ansible command module creates parameter example.
+#         command: rm hello3.txt
+#         args:
+#          chdir: /root/
+#          removes: hello3.txt
+
+#        - name: Ansible command module multiple commands
+#          command: "touch {{ item }}"
+#          with_items:
+#              - hello.txt
+#              - hello2.txt
+#              - hello3.txt
+#          args:
+#            chdir: /root/
+#
+#       - name: Ansible shell module multiple commands
+#          shell: "cat {{ item }} | grep ansible"
+#          with_items:
+#             - hello.txt
+#             - hello2.txt
+#             - hello3.txt
+#          args:
+#            chdir: /root/
+
+         - name: Ensure absence of old freeze files
+           file:
+             path: '{{ item }}'
+             state: absent
+           with_items:
+              - /root/hello.txt
+              - /root/hello2.txt
+              - /root/hello3.txt
