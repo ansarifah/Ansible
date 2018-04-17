@@ -1,0 +1,5 @@
+- name: Ansible command module creates parameter example.
+  command: rm input.txt
+  args:
+    chdir: /tmp/input.txt
+    removes: input.txt
