@@ -1,0 +1,18 @@
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: Add repository
+      yum_repository:
+          name: epel
+          description: EPEL YUM repo
+          baseurl: https://rpmfind.net/linux/fedora/linux/development/rawhide/Everything/aarch64/os/Packages/n/ntp-4.2.8p11-2.fc29.aarch64.rpm
+          enabled: no
+
+
+    - name: Install NTP daemon
+      sudo: true
+      yum: pkg=ntp state=present
+
+    - name: Ensure NTP daemon autostart
+      sudo: true
+      service: name=ntp enabled=yes
