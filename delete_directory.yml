@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: ansible remove directory example
+    file:
+      path: "{{ item.dest }}"
+      state: absent
+    with_items:
+      - {dest: '/tmp/devops_directory1'}
+      - {dest: '/tmp/devops_system2'}
+      - {dest: '/tmp/devops_system3'}
+      - {dest: '/tmp/devops_system4'}
