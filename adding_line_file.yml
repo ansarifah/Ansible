@@ -1,0 +1,20 @@
+- hosts: all
+  tasks:
+    - name: line insert
+      lineinfile:
+        path: /tmp/input.txt
+        line: 'Added Line by ansible scripts again'
+        insertbefore: BOF
+
+  tasks:
+     - name: Insert a line at the end of a file.
+       lineinfile:
+         path: /tmp/input.txt
+         line: Added
+
+  tasks:
+    - name: Ansible insert a line before example
+      lineinfile:
+        path: /etc/hosts
+        line: '8.8.8.8 google.com'
+        insertbefore: .*domain.com
